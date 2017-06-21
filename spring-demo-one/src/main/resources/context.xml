@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="fortuneService" class="com.luv2code.HappyFortuneService" />
+
+    <!-- Demonstrates constructor autowiring -->
+    <bean id="coach" class="com.luv2code.WaterPoloCoach">
+        <constructor-arg ref="fortuneService" />
+    </bean>
+
+    <!-- Will automatically call setFortuneService -->
+    <bean id="cricketCoach" class="com.luv2code.CricketCoach">
+        <property name="fortuneService" ref="fortuneService" />
+    </bean>
+</beans>
