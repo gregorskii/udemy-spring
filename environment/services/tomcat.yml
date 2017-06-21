@@ -1,0 +1,12 @@
+version: '2'
+services:
+  tomcat:
+    image: "tomcat:8.0.44-jre8"
+    ports:
+      - "8080:8080"
+    volumes:
+      - tomcat-webapps:/usr/local/tomcat/webapps
+      - tomcat-work:/usr/local/tomcat/work
+      - ../data/tomcat-logs:/usr/local/tomcat/logs
+      - ../containers/tomcat/settings.xml:/usr/local/tomcat/conf/settings.xml
+      - ../containers/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml

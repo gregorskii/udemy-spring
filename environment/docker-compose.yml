@@ -1,0 +1,10 @@
+version: '2'
+volumes:
+  tomcat-webapps:
+  tomcat-work:
+
+services:
+  tomcat:
+    extends:
+      file: ./services/tomcat.yml
+      service: tomcat
