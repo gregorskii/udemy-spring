@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="fortuneService" class="com.luv2code.HappyFortuneService" />
+    <!--<context:property-placeholder location="application.properties" />-->
+
+    <bean id="fortuneService" class="com.luv2code.RotatingFortuneService" />
 
     <!-- Demonstrates constructor autowiring -->
-    <bean id="coach" class="com.luv2code.WaterPoloCoach">
+    <!--<bean id="coach" class="com.luv2code.TrackCoach">-->
+        <!--<constructor-arg ref="fortuneService" />-->
+    <!--</bean>-->
+
+    <!-- Demonstrates prototype/singleton -->
+    <!-- Demonstrates init destroy, note destroy does not get called when prototype -->
+    <bean
+        id="coach"
+        class="com.luv2code.TrackCoach"
+        scope="prototype"
+        init-method="beanInit"
+        destroy-method="beanDestroy"
+    >
         <constructor-arg ref="fortuneService" />
     </bean>
 
     <!-- Will automatically call setFortuneService -->
-    <bean id="cricketCoach" class="com.luv2code.CricketCoach">
-        <property name="fortuneService" ref="fortuneService" />
-    </bean>
+    <!--<bean id="cricketCoach" class="com.luv2code.CricketCoach">-->
+        <!--<property name="fortuneService" ref="fortuneService" />-->
+        <!--<property name="emailAddress" value="${email}" />-->
+        <!--<property name="team" value="${team}" />-->
+    <!--</bean>-->
 </beans>
