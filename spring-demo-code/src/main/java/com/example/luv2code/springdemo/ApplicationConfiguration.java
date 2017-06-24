@@ -1,0 +1,8 @@
+package com.example.luv2code.springdemo;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan("com.example.luv2code.springdemo")
+public class ApplicationConfiguration { }

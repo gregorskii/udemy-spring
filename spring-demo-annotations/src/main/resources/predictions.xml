@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<predictions>
+    <prediction>
+        <value>You will win!</value>
+    </prediction>
+    <prediction>
+        <value>You will lose!</value>
+    </prediction>
+    <prediction>
+        <value>You may win.</value>
+    </prediction>
+    <prediction>
+        <value>You may lose!</value>
+    </prediction>
+</predictions>
