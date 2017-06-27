@@ -46,17 +46,17 @@ The remote debugging config is setup by the environment variables in `./env/tomc
 
 Create a `Tomcat: Remote` Run Configuration and config it like so:
 
-![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/readme-assets/project-config-run.png)
+![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/environment/readme-assets/project-config-run.png)
 
 NOTE: name it whatever you like, but remember it for below.
 
 Ensure the Spring project has a artifact of `Web Application: Exploded`:
 
-![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/readme-assets/project-config-artifact.png)
+![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/environment/readme-assets/project-config-artifact.png)
 
 Ensure the Run configuration is set to deploy the exploded WAR:
 
-![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/readme-assets/project-config-deployment.png)
+![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/environment/readme-assets/project-config-deployment.png)
 
 ## Running Intellij Run Mode
 
