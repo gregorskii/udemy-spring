@@ -52,7 +52,7 @@ NOTE: name it whatever you like, but remember it for below.
 
 Ensure the Spring project has a artifact of `Web Application: Exploded`:
 
-![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/environment/readme-assets/project-config-artifact.png)
+![Intellij Config](https://raw.githubusercontent.com/gregorskii/udemy-spring/master/environment/readme-assets/project-config-artifacts.png)
 
 Ensure the Run configuration is set to deploy the exploded WAR:
 
