@@ -13,8 +13,17 @@
 <body>
     <section class="content" layout:fragment="content">
         <h1 th:text="${student.firstName} + ' ' + ${student.lastName}" />
+        <p th:text="'Country: ' + ${student.country}" />
+        <p th:text="'This person is ' + ${student.personality}" />
+        <h3>Grades:</h3>
         <p th:text="${student.subject} + ':  ' + ${student.grade}" />
-        <p th:text="${student.country}" />
+        <h3>General Info</h3>
+        <div th:if="${student.doingWell == true}">The Student is doing well in their courses.</div>
+        <div th:if="${student.doingWell == false}">The Student is not doing well in their courses.</div>
+        <h4>Favorite Subjects</h4>
+        <ul class="list-group" th:each="subject : ${student.favoriteSubjects}">
+            <li class="list-group-item" th:text="${subject}" />
+        </ul>
     </section>
 </body>
 

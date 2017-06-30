@@ -11,6 +11,7 @@
 
 <body>
     <section class="content" layout:fragment="content">
+        <h1>New Student</h1>
         <form action="#" th:action="@{/tag-form/processForm}" th:object="${student}">
             <div class="form-group">
                 <label th:for="firstName">First Name:</label>
@@ -55,6 +56,47 @@
                             th:text="${theCountry.value}">Country</option>
                     </div>
                 </select>
+            </div>
+
+            <fieldset class="form-group">
+                <legend>Personality</legend>
+                <div class="form-check" th:each="type, index : ${personalityTypes}">
+                    <label class="form-check-label">
+                        <input
+                            type="radio"
+                            class="form-check-input"
+                            name="personalityRadio"
+                            th:value="${type.text}"
+                            th:id="'personality' + ${type.name}"
+                            th:field="*{personality}" />
+                        <span th:text="${type.text}"></span>
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        th:field="*{doingWell}"
+                    />
+                    Is doing well?
+                </label>
+            </div>
+
+            <h3>Favorite Subjects</h3>
+
+            <div class="form-check">
+                <label th:each="subject : ${favoriteSubjectsOptions}" class="form-check-label">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        th:field="*{favoriteSubjects}"
+                        th:value="${subject}"
+                        th:text="${subject}"
+                    />
+                </label>
             </div>
 
             <input
