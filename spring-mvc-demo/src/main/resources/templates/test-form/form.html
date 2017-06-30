@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/layout">
+
+<head>
+    <title>Form</title>
+</head>
+
+<body>
+    <section class="content" layout:fragment="content">
+        <form action="#" th:action="@{/processForm}" method="get">
+            <div class="form-group">
+                <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="What's your name?"
+                />
+
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>

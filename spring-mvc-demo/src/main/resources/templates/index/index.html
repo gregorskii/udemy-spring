@@ -1,0 +1,24 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/layout">
+
+<head>
+    <title>Form</title>
+</head>
+
+<body>
+    <section class="content" layout:fragment="content">
+        <p th:text="'Hello, ' + ${name} + '!'" />
+
+        <nav class="nav flex-column">
+            <a class="nav-link" th:href="@{/form}">Go to Form</a>
+            <a class="nav-link" th:href="@{/shout}">Go to Shout Form</a>
+            <a class="nav-link" th:href="@{/tag-form/}">Go to Tag Form</a>
+        </nav>
+    </section>
+</body>
+
+</html>

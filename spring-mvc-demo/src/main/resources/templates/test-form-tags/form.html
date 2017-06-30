@@ -1,0 +1,69 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/layout">
+
+<head>
+    <title>Form</title>
+</head>
+
+<body>
+    <section class="content" layout:fragment="content">
+        <form action="#" th:action="@{/tag-form/processForm}" th:object="${student}">
+            <div class="form-group">
+                <label th:for="firstName">First Name:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{firstName}"
+                />
+            </div>
+            <div class="form-group">
+                <label th:for="lastName">Last Name:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{lastName}"
+                />
+            </div>
+            <div class="form-group">
+                <label th:for="subject">Subject:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{subject}"
+                />
+            </div>
+            <div class="form-group">
+                <label th:for="grade">Grade:</label>
+                <input type="text" th:field="*{grade}" />
+            </div>
+
+            <div class="form-group">
+                <label th:for="country">Country</label>
+                <select class="form-control" th:field="*{country}">
+                    <div>
+                        <option
+                            value=""
+                            th:disabled="disabled"
+                            th:selected="selected">Choose your country</option>
+                        <option
+                            th:each="theCountry : ${countries.options}"
+                            th:value="${theCountry.key}"
+                            th:text="${theCountry.value}">Country</option>
+                    </div>
+                </select>
+            </div>
+
+            <input
+                type="submit"
+                class="btn btn-primary"
+                value="Submit"
+            />
+        </form>
+    </section>
+</body>
+
+</html>
