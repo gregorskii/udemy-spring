@@ -1,2 +1,7 @@
-app:
-  name: Spring Demo
+# Spring Config
+spring:
+  application:
+    name: Spring Demo
+
+# Application specific properties
+application:

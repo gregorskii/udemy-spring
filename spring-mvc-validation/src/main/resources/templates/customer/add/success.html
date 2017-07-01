@@ -24,6 +24,8 @@
                     class="card-subtitle mb-2 text-muted"
                     th:text="${customer.description}"
                 />
+                <p class="card-text" th:text="'The customer is ' + ${customer.age}" />
+                <p class="card-text" th:text="'The customers Zip Code is ' + ${customer.zipCode}" />
             </div>
         </div>
     </section>

@@ -64,6 +64,40 @@
                     th:errors="*{description}"
                 />
             </div>
+            <div
+                class="form-group"
+                th:classappend="${#fields.hasErrors('age')} ? 'has-danger' : ''"
+            >
+                <label th:for="age">Age:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{age}"
+                    th:classappend="${#fields.hasErrors('age')} ? 'form-control-danger' : ''"
+                />
+                <div
+                    class="form-control-feedback"
+                    th:if="${#fields.hasErrors('age')}"
+                    th:errors="*{age}"
+                />
+            </div>
+            <div
+                class="form-group"
+                th:classappend="${#fields.hasErrors('zipCode')} ? 'has-danger' : ''"
+            >
+                <label th:for="zipCode">Zip Code:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{zipCode}"
+                    th:classappend="${#fields.hasErrors('zipCode')} ? 'form-control-danger' : ''"
+                />
+                <div
+                    class="form-control-feedback"
+                    th:if="${#fields.hasErrors('zipCode')}"
+                    th:errors="*{zipCode}"
+                />
+            </div>
             <input
                 type="submit"
                 class="btn btn-primary btn-block"

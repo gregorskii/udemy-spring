@@ -35,6 +35,8 @@ public class CustomerController {
         BindingResult bindingResult,
         final RedirectAttributes redirectAttributes
     ) {
+        // TODO: DEBUG
+        System.out.println(bindingResult);
         if (bindingResult.hasErrors()) {
             return "customer/add/index";
         }
@@ -42,6 +44,8 @@ public class CustomerController {
         redirectAttributes.addAttribute("firstName", customer.getFirstName());
         redirectAttributes.addAttribute("lastName", customer.getLastName());
         redirectAttributes.addAttribute("description", customer.getDescription());
+        redirectAttributes.addAttribute("age", customer.getAge());
+        redirectAttributes.addAttribute("zipCode", customer.getZipCode());
         return "redirect:/customer/add/success";
     }
 
@@ -50,12 +54,16 @@ public class CustomerController {
         @RequestParam(value = "firstName") String firstName,
         @RequestParam(value = "lastName") String lastName,
         @RequestParam(value = "description") String description,
+        @RequestParam(value = "age") String age,
+        @RequestParam(value = "zipCode") String zipCode,
         Model model
     ) {
         model.addAttribute("customer", new Customer(
             firstName,
             lastName,
-            description
+            description,
+            Integer.parseInt(age),
+            zipCode
         ));
         return "customer/add/success";
     }
