@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -26,16 +29,35 @@ public class CustomerController {
         return "customer/add/index";
     }
 
-    @RequestMapping("/add/process")
+    // TODO: Using POST as I dislike gets for this, even if they are easier...
+    @PostMapping("/add/process")
     public String addProcess(
         @Valid @ModelAttribute("customer") Customer customer,
         BindingResult bindingResult,
+        final RedirectAttributes redirectAttributes
+    ) {
+        if (bindingResult.hasErrors()) {
+            return "redirect:/customer/add";
+        }
+        // TODO: TEMP as this example does not include persistence
+        redirectAttributes.addAttribute("firstName", customer.getFirstName());
+        redirectAttributes.addAttribute("lastName", customer.getLastName());
+        redirectAttributes.addAttribute("description", customer.getDescription());
+        return "redirect:/customer/add/success";
+    }
+
+    @RequestMapping("/add/success")
+    public String success(
+        @RequestParam(value = "firstName") String firstName,
+        @RequestParam(value = "lastName") String lastName,
+        @RequestParam(value = "description") String description,
         Model model
     ) {
-        model.addAttribute("customer", customer);
-        if (bindingResult.hasErrors()) {
-            return "customer/add/index";
-        }
+        model.addAttribute("customer", new Customer(
+            firstName,
+            lastName,
+            description
+        ));
         return "customer/add/success";
     }
 }

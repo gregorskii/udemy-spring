@@ -20,6 +20,18 @@ public class Customer {
     @Size(min=1, message="Description must be longer than 1 character")
     private String description;
 
+    public Customer() { }
+
+    public Customer(
+        String firstName,
+        String lastName,
+        String description
+    ) {
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setDescription(description);
+    }
+
     public String getFirstName() {
         return firstName;
     }
