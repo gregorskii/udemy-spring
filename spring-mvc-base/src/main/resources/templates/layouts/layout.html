@@ -12,10 +12,9 @@
 
 <body>
     <section class="container">
+        <th:block layout:replace="fragments/nav"/>
         <section class="content" layout:fragment="content" />
-        <footer>
-            <p>&copy; 2017 Greggy Greg Inc</p>
-        </footer>
+        <th:block layout:replace="fragments/footer"/>
     </section>
 
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
