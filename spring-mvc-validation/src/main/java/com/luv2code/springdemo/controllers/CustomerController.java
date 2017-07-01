@@ -1,13 +1,12 @@
 package com.luv2code.springdemo.controllers;
 
 import com.luv2code.springdemo.models.Customer;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -37,7 +36,7 @@ public class CustomerController {
         final RedirectAttributes redirectAttributes
     ) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/customer/add";
+            return "customer/add/index";
         }
         // TODO: TEMP as this example does not include persistence
         redirectAttributes.addAttribute("firstName", customer.getFirstName());
@@ -59,5 +58,15 @@ public class CustomerController {
             description
         ));
         return "customer/add/success";
+    }
+
+    /**
+     * Add an initBinder to handle strings that are empty
+     *
+     * @param dataBinder
+     */
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        dataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 }
