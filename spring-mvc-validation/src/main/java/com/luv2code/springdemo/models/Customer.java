@@ -16,6 +16,10 @@ public class Customer {
     @Size(min=1, message="Last Name must be longer than 1 character")
     private String lastName;
 
+    @NotNull(message="Description is Required")
+    @Size(min=1, message="Description must be longer than 1 character")
+    private String description;
+
     public String getFirstName() {
         return firstName;
     }
@@ -30,5 +34,13 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

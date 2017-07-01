@@ -1,0 +1,32 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/layout">
+
+<head>
+    <title>Customer: Add: Success</title>
+</head>
+
+<body>
+    <section class="content" layout:fragment="content">
+        <h1>New Customer</h1>
+        <div class="alert alert-success" role="alert">
+            <strong>Success!</strong> Customer has been added!
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <h4
+                    class="card-title"
+                    th:text="${customer.firstName} + ' ' + ${customer.lastName}" />
+                <h6
+                    class="card-subtitle mb-2 text-muted"
+                    th:text="${customer.description}"
+                />
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
