@@ -24,7 +24,7 @@ public class Customer {
     private String description;
 
     // TODO: typeMistmatch does not work.
-    @NotNull
+    @NotNull(message="{NotNull.customer.age}")
     @Min(value=1, message="{Min.customer.age}")
     @Max(value=110, message="{Max.customer.age}")
     private Integer age;
