@@ -46,6 +46,7 @@ public class CustomerController {
         redirectAttributes.addAttribute("description", customer.getDescription());
         redirectAttributes.addAttribute("age", customer.getAge());
         redirectAttributes.addAttribute("zipCode", customer.getZipCode());
+        redirectAttributes.addAttribute("branch", customer.getBranch());
         return "redirect:/customer/add/success";
     }
 
@@ -56,6 +57,7 @@ public class CustomerController {
         @RequestParam(value = "description") String description,
         @RequestParam(value = "age") String age,
         @RequestParam(value = "zipCode") String zipCode,
+        @RequestParam(value = "branch") String branch,
         Model model
     ) {
         model.addAttribute("customer", new Customer(
@@ -63,7 +65,8 @@ public class CustomerController {
             lastName,
             description,
             Integer.parseInt(age),
-            zipCode
+            zipCode,
+            branch
         ));
         return "customer/add/success";
     }

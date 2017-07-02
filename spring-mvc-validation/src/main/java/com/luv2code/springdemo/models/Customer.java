@@ -1,5 +1,6 @@
 package com.luv2code.springdemo.models;
 
+import com.luv2code.springdemo.validation.BranchCode;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
@@ -12,15 +13,15 @@ import javax.validation.constraints.Pattern;
 public class Customer {
 
     @NotNull(message="{NotNull.customer.firstName}")
-    @Size(min=1, message="{Size.customer.firstName}")
+    @Size(min=2, message="{Size.customer.firstName}")
     private String firstName;
 
     @NotNull(message="{NotNull.customer.lastName}")
-    @Size(min=1, message="{Size.customer.lastName}")
+    @Size(min=2, message="{Size.customer.lastName}")
     private String lastName;
 
     @NotNull(message="{NotNull.customer.description}")
-    @Size(min=1, message="{Size.customer.description}")
+    @Size(min=2, message="{Size.customer.description}")
     private String description;
 
     // TODO: typeMistmatch does not work.
@@ -33,6 +34,11 @@ public class Customer {
     @Pattern(regexp="^[0-9]{5}(-[0-9]{4})?", message="{Pattern.customer.zipCode}")
     private String zipCode;
 
+    @NotNull(message="{NotNull.customer.branch}")
+    @Size(min=6, message="{Size.customer.branch}")
+    @BranchCode(value="US1", message="{BranchCode.customer.branch}")
+    private String branch;
+
     public Customer() { }
 
     public Customer(
@@ -40,13 +46,15 @@ public class Customer {
         String lastName,
         String description,
         Integer age,
-        String zipCode
+        String zipCode,
+        String branch
     ) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setDescription(description);
         this.setAge(age);
         this.setZipCode(zipCode);
+        this.setBranch(branch);
     }
 
     public String getFirstName() {
@@ -87,5 +95,13 @@ public class Customer {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 }
