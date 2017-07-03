@@ -12,29 +12,28 @@ import javax.validation.constraints.Pattern;
 @Component
 public class Customer {
 
-    @NotNull(message="{NotNull.customer.firstName}")
+    @NotNull
     @Size(min=2, message="{Size.customer.firstName}")
     private String firstName;
 
-    @NotNull(message="{NotNull.customer.lastName}")
+    @NotNull
     @Size(min=2, message="{Size.customer.lastName}")
     private String lastName;
 
-    @NotNull(message="{NotNull.customer.description}")
+    @NotNull
     @Size(min=2, message="{Size.customer.description}")
     private String description;
 
-    // TODO: typeMistmatch does not work.
-    @NotNull(message="{NotNull.customer.age}")
+    @NotNull
     @Min(value=1, message="{Min.customer.age}")
     @Max(value=110, message="{Max.customer.age}")
     private Integer age;
 
-    @NotNull(message="{NotNull.customer.zipCode}")
-    @Pattern(regexp="^[0-9]{5}(-[0-9]{4})?", message="{Pattern.customer.zipCode}")
+    @NotNull
+    @Pattern(regexp="^[0-9]{5}(-[0-9]{4})?")
     private String zipCode;
 
-    @NotNull(message="{NotNull.customer.branch}")
+    @NotNull
     @Size(min=6, message="{Size.customer.branch}")
     @BranchCode(value="US1", message="{BranchCode.customer.branch}")
     private String branch;
