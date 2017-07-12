@@ -1,10 +1,16 @@
 version: '2'
 volumes:
-  tomcat-webapps:
-  tomcat-work:
+  # tomcat-webapps:
+  # tomcat-work:
+  sql-data:
 
 services:
-  tomcat:
+  # tomcat:
+  #   extends:
+  #     file: ./services/tomcat.yml
+  #     service: tomcat
+
+  mysql:
     extends:
-      file: ./services/tomcat.yml
-      service: tomcat
+      file: ./services/mysql.yml
+      service: mysql
