@@ -1,0 +1,23 @@
+# Spring Config
+spring:
+  application:
+    name: Spring Demo
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false
+    username: hbstudent
+    password: hbstudent
+    driver-class-name: com.mysql.jdbc.Driver
+
+  # Hibernate Config
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        connection:
+          pool_size: 1
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+
+# Application specific properties
+application:
