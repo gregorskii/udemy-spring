@@ -4,9 +4,9 @@ spring:
     name: Spring Demo
 
   datasource:
-    url: jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false
-    username: hbstudent
-    password: hbstudent
+    url: jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false
+    username: springstudent
+    password: springstudent
     driver-class-name: com.mysql.jdbc.Driver
 
   # Hibernate Config
