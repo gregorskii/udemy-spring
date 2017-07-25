@@ -1,0 +1,7 @@
+# Spring Config
+spring:
+  application:
+    name: Spring Demo
+
+# Application specific properties
+application:
