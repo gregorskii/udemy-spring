@@ -1,6 +1,7 @@
 package com.luv2code.springdemo.dao;
 
 import com.luv2code.springdemo.entities.Customer;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,5 +47,21 @@ public class CustomerDaoImpl implements CustomerDao {
         Session session = sessionFactory.getCurrentSession();
 
         session.update(customer);
+    }
+
+    @Override
+    public void deleteCustomer(String id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        // TWO STEPS
+        // session.delete(session.get(Customer.class, id));
+
+        // ONE STEP
+        Query query =
+            session.createQuery("delete from Customer where id=:customerId");
+
+        query.setParameter("customerId", id);
+
+        query.executeUpdate();
     }
 }

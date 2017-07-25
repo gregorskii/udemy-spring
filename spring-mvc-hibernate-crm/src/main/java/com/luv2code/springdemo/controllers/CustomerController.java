@@ -83,6 +83,15 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    @PostMapping("/delete/process")
+    public String deleteProcess(
+        @RequestParam(value = "customerId") String id
+    ) {
+        customerService.deleteCustomer(id);
+
+        return "redirect:/customers";
+    }
+
     /**
      * Add an initBinder to handle strings that are empty
      *
