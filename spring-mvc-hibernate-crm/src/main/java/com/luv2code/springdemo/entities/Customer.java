@@ -45,6 +45,14 @@ public class Customer {
         setEmail(email);
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }

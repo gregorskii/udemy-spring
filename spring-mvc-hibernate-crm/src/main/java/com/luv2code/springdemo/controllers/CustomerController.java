@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -29,7 +26,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @RequestMapping()
+    @GetMapping()
     public String index(
         Model model
     ) {
@@ -40,7 +37,7 @@ public class CustomerController {
         return "customers/index";
     }
 
-    @RequestMapping("/add")
+    @GetMapping("/add")
     public String add(
         Model model
     ) {
@@ -57,6 +54,32 @@ public class CustomerController {
             return "customers/add/index";
         }
         customerService.saveCustomer(customer);
+        return "redirect:/customers";
+    }
+
+    @GetMapping("/update")
+    public String update(
+        @RequestParam(value = "customerId") String id,
+        Model model
+    ) {
+        model.addAttribute("customer", customerService.getCustomerById(id));
+
+        return "customers/update/index";
+    }
+
+    // TODO: could reuse add/process, but left as own method
+    @PostMapping("/update/process")
+    public String updateProcess(
+        @Valid @ModelAttribute("customer") Customer customer,
+        BindingResult bindingResult
+    ) {
+        if (bindingResult.hasErrors()) {
+            return "customers/update/index";
+        }
+
+        System.out.println(customer.toString());
+
+        customerService.updateCustomer(customer);
         return "redirect:/customers";
     }
 

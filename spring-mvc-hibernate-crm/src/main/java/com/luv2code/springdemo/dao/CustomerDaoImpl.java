@@ -20,10 +20,16 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
+    public Customer getCustomerById(String id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Customer.class, id);
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
     public List<Customer> getCustomers() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Customer").list();
+        return session.createQuery("from Customer order by lastName").list();
     }
 
     @Override
@@ -33,5 +39,12 @@ public class CustomerDaoImpl implements CustomerDao {
         Session session = sessionFactory.getCurrentSession();
 
         session.save(customer);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.update(customer);
     }
 }

@@ -6,7 +6,7 @@
     layout:decorator="layouts/layout">
 
 <head>
-    <title>Demo Website</title>
+    <title>Add Customer</title>
 </head>
 
 <body>
@@ -38,7 +38,9 @@
                         <td th:text="${customer.email}" />
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info">Update</button>
+                                <a th:href="@{/customers/update(customerId=${customer.id})}">
+                                    <button type="button" class="btn btn-info">Update</button>
+                                </a>
                                 <button type="button" class="btn btn-danger">Delete</button>
                             </div>
                         </td>
