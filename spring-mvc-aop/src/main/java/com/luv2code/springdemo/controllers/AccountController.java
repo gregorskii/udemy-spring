@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/account")
@@ -26,12 +27,9 @@ public class AccountController {
     public String index(
         Model model
     ) {
-        Account account = new Account("Gold", "Greg");
         accountService.addAccount();
 
-        ArrayList<Account> accounts = new ArrayList<>();
-
-        accounts.add(account);
+        List<Account> accounts = accountService.findAccounts();
 
         model.addAttribute("accounts", accounts);
 

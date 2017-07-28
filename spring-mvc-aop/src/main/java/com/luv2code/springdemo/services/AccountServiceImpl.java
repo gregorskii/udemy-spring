@@ -6,6 +6,8 @@ import com.luv2code.springdemo.entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AccountServiceImpl implements AccountService {
 
@@ -31,5 +33,15 @@ public class AccountServiceImpl implements AccountService {
         accountDao.isAccount();
         accountDao.doWork();
         membershipDao.goToSleep();
+        try {
+            accountDao.runException();
+        } catch (Exception e) {
+            System.out.println("Catching localized exception");
+        }
+    }
+
+    @Override
+    public List<Account> findAccounts() {
+        return accountDao.findAccounts();
     }
 }
