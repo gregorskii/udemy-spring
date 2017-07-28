@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layouts/layout">
+
+<head>
+    <title>Accounts</title>
+</head>
+
+<body>
+    <section class="content" layout:fragment="content">
+        <p>Accounts!</p>
+
+        <div class="results">
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Level</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="account : ${accounts}">
+                    <td th:text="${account.name}" />
+                    <td th:text="${account.level}" />
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+
+</html>
