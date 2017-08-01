@@ -1,0 +1,18 @@
+# Spring Config
+spring:
+  application:
+    name: Spring Demo
+
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    show-sql: true
+
+logging:
+  pattern:
+    console: "%clr(%-5level): %clr(%msg%n){faint}"
+
+# Application specific properties
+application:
