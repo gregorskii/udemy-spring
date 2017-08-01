@@ -15,7 +15,8 @@ public class Book {
 
     private String isbn;
 
-    private String publisher;
+    @OneToOne
+    private Publisher publisher;
 
     @ManyToMany
     @JoinTable(
@@ -30,7 +31,7 @@ public class Book {
     public Book(
         String title,
         String isbn,
-        String publisher
+        Publisher publisher
     ) {
         setTitle(title);
         setIsbn(isbn);
@@ -40,7 +41,7 @@ public class Book {
     public Book(
         String title,
         String isbn,
-        String publisher,
+        Publisher publisher,
         Set<Author> authors
     ) {
         setTitle(title);
@@ -73,11 +74,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String getPublisher() {
+    public Publisher getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
 
@@ -87,5 +88,16 @@ public class Book {
 
     public void setAuthors(Set<Author> authors) {
         this.authors = authors;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", isbn='" + isbn + '\'' +
+            ", publisher='" + publisher + '\'' +
+            ", authors=" + authors +
+            '}';
     }
 }
