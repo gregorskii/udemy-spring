@@ -1,0 +1,8 @@
+# Spring Config
+spring:
+  application:
+    name: Spring Demo
+
+logging:
+  pattern:
+    console: "%clr(%-5level): %clr(%msg%n){faint}"

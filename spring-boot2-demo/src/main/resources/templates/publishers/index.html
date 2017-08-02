@@ -1,0 +1,28 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout}">
+
+<head>
+    <title>Demo Website: Publishers</title>
+</head>
+
+<body>
+    <section class="content" layout:fragment="content">
+        <h3>Publishers</h3>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="publisher : ${publishers}">
+                    <td th:text="${publisher.name}" />
+                    <td th:text="${publisher.address}" />
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

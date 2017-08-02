@@ -1,0 +1,32 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout}">
+
+<head>
+    <title>Demo Website: Authors</title>
+</head>
+
+<body>
+    <section class="content" layout:fragment="content">
+        <h3>Authors</h3>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Books</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="author : ${authors}">
+                    <td th:text="${author.firstName} + ' ' + ${author.lastName}" />
+                    <td>
+                        <span th:each="book : ${author.books}">
+                            <p th:text="${book.title}" />
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
